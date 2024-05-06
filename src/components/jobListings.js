@@ -110,139 +110,140 @@ const JobListings = () => {
 
   return (
     <div>
-         <div
-            style={{
-              display: "flex",
-              justifyContent: "space-around",
-              padding: "10px",
-              borderRadius: "5px",
-              backgroundColor: "#cadcfc"
-            }}
-          
-          >
-            <Grid
-              container
-              spacing={2}
-              alignContent="center"
-              justifyContent="space-around"
-            >
-              <Grid item xs={12} sm={6} md={4} lg={2}>
-                <TextField
-                  type="text"
-                  name="role"
-                  value={filters.role}
-                  onChange={handleInputChange}
-                  placeholder="Role..."
-                  fullWidth
-                  sx={{
-                    "& input": {
-                      color: "#FFFFFF",
-                      backgroundColor: "#00246b",
-                      borderRadius: "5px",
-                    },
-                    "& fieldset": {
-                      borderColor: "#3f51b5",
-                      borderRadius: "5px",
-                    },
-                  }}
-                />
-              </Grid>
-              <Grid item xs={12} sm={6} md={4} lg={2}>
-                <TextField
-                  type="text"
-                  name="location"
-                  value={filters.location}
-                  onChange={handleInputChange}
-                  placeholder="Location..."
-                  fullWidth
-                  sx={{
-                    "& input": {
-                      color: "#FFFFFF",
-                      backgroundColor: "#00246b",
-                      borderRadius: "5px",
-                    },
-                    "& fieldset": {
-                      borderColor: "#3f51b5",
-                      borderRadius: "5px",
-                    },
-                  }}
-                />
-              </Grid>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-around",
+          padding: "10px",
+          borderRadius: "5px",
+         
+        }}
+      >
+        <Grid
+          container
+          spacing={2}
+          alignContent="center"
+          justifyContent="space-around"
+        >
+          <Grid item xs={12} sm={6} md={4} lg={2}>
+            <TextField
+              type="text"
+              name="role"
+              value={filters.role}
+              onChange={handleInputChange}
+              placeholder="Role..."
+              fullWidth
+              sx={{
+                "& input": {
+                  color: "#FFFFFF",
+                  backgroundColor: "#00246b",
+                  borderRadius: "5px",
+                },
+                "& fieldset": {
+                  borderColor: "#3f51b5",
+                  borderRadius: "5px",
+                },
+              }}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6} md={4} lg={2}>
+            <TextField
+              type="text"
+              name="location"
+              value={filters.location}
+              onChange={handleInputChange}
+              placeholder="Location..."
+              fullWidth
+              sx={{
+                "& input": {
+                  color: "#FFFFFF",
+                  backgroundColor: "#00246b",
+                  borderRadius: "5px",
+                },
+                "& fieldset": {
+                  borderColor: "#3f51b5",
+                  borderRadius: "5px",
+                },
+              }}
+            />
+          </Grid>
 
-              <Grid item xs={12} sm={6} md={4} lg={2}>
-                <TextField
-                  type="text"
-                  name="minSalary"
-                  value={filters.minSalary}
-                  onChange={handleInputChange}
-                  placeholder="Min Salary..."
-                  fullWidth
-                  sx={{
-                    "& input": {
-                      color: "#FFFFFF",
-                      backgroundColor: "#00246b",
-                      borderRadius: "5px",
-                    },
-                    "& fieldset": {
-                      borderColor: "#3f51b5",
-                      borderRadius: "5px",
-                    },
-                  }}
-                />
-              </Grid>
-              <Grid item xs={12} sm={6} md={4} lg={2}>
-                <TextField
-                  type="text"
-                  name="company"
-                  value={filters.company}
-                  onChange={handleInputChange}
-                  placeholder="Company..."
-                  fullWidth
-                  sx={{
-                    "& input": {
-                      color: "#FFFFFF",
-                      backgroundColor: "#00246b",
-                      borderRadius: "5px",
-                    },
-                    "& fieldset": {
-                      borderColor: "#3f51b5",
-                      borderRadius: "5px",
-                    },
-                  }}
-                />
-              </Grid>
-              <Grid item xs={12} sm={6} md={4} lg={2}>
-                <TextField
-                  type="text"
-                  name="experience"
-                  value={filters.experience}
-                  onChange={handleInputChange}
-                  placeholder="Experience..."
-                  fullWidth
-                  sx={{
-                    "& input": {
-                      color: "#FFFFFF",
-                      backgroundColor: "#00246b",
-                      borderRadius: "5px",
-                    },
-                    "& fieldset": {
-                      borderColor: "#3f51b5",
-                      borderRadius: "5px",
-                    },
-                  }}
-                />
-              </Grid>
-            </Grid>
-          </div>
+          <Grid item xs={12} sm={6} md={4} lg={2}>
+            <TextField
+              type="text"
+              name="minSalary"
+              value={filters.minSalary}
+              onChange={handleInputChange}
+              placeholder="Min Salary..."
+              fullWidth
+              sx={{
+                "& input": {
+                  color: "#FFFFFF",
+                  backgroundColor: "#00246b",
+                  borderRadius: "5px",
+                },
+                "& fieldset": {
+                  borderColor: "#3f51b5",
+                  borderRadius: "5px",
+                },
+              }}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6} md={4} lg={2}>
+            <TextField
+              type="text"
+              name="company"
+              value={filters.company}
+              onChange={handleInputChange}
+              placeholder="Company..."
+              fullWidth
+              sx={{
+                "& input": {
+                  color: "#FFFFFF",
+                  backgroundColor: "#00246b",
+                  borderRadius: "5px",
+                },
+                "& fieldset": {
+                  borderColor: "#3f51b5",
+                  borderRadius: "5px",
+                },
+              }}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6} md={4} lg={2}>
+            <TextField
+              type="text"
+              name="experience"
+              value={filters.experience}
+              onChange={handleInputChange}
+              placeholder="Experience..."
+              fullWidth
+              sx={{
+                "& input": {
+                  color: "#FFFFFF",
+                  backgroundColor: "#00246b",
+                  borderRadius: "5px",
+                },
+                "& fieldset": {
+                  borderColor: "#3f51b5",
+                  borderRadius: "5px",
+                },
+              }}
+            />
+          </Grid>
+        </Grid>
+      </div>
       {cardClicked == false ? (
-        <div  style={{
+        <div
+          style={{
             padding: "20px",
             borderRadius: "10px",
             overflowY: "auto",
             borderRight: "1px solid #ccc",
             maxHeight: "calc(100vh - 150px)",
-            backgroundColor: "#cadcfc",
-          }}>
+           
+          }}
+        >
           <div>
             <Grid
               container
@@ -257,6 +258,7 @@ const JobListings = () => {
                       boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
                       cursor: "pointer",
                       marginBottom: "20px",
+                      backgroundColor: "#cadcfc"
                     }}
                   >
                     <CardContent>
@@ -295,7 +297,10 @@ const JobListings = () => {
                       >
                         <div>
                           <div
-                            style={{ display: "flex", alignItems: "center" }}
+                            style={{
+                              display: "flex",
+                              alignItems: "center",
+                            }}
                           >
                             <Typography
                               variant="body2"
@@ -310,21 +315,40 @@ const JobListings = () => {
                             >
                               Minimum Experience:
                             </Typography>
-                            <Typography
-                              variant="body2"
-                              gutterBottom
-                              style={{
-                                fontFamily: "Arial, sans-serif",
+                            <>
+                              {job.minExp == null || 0 ? (
+                                <Typography
+                                  variant="body2"
+                                  gutterBottom
+                                  style={{
+                                    fontFamily: "Arial, sans-serif",
 
-                                marginBottom: "8px",
-                              }}
-                            >
-                              {job.minExp} years
-                            </Typography>
+                                    marginBottom: "8px",
+                                  }}
+                                >
+                                  0 years
+                                </Typography>
+                              ) : (
+                                <Typography
+                                  variant="body2"
+                                  gutterBottom
+                                  style={{
+                                    fontFamily: "Arial, sans-serif",
+
+                                    marginBottom: "8px",
+                                  }}
+                                >
+                                  {job.minExp} years
+                                </Typography>
+                              )}
+                            </>
                           </div>
 
                           <div
-                            style={{ display: "flex", alignItems: "center" }}
+                            style={{
+                              display: "flex",
+                              alignItems: "center",
+                            }}
                           >
                             <Typography
                               variant="body2"
@@ -339,17 +363,32 @@ const JobListings = () => {
                             >
                               Estimated Salary:
                             </Typography>
-                            <Typography
-                              variant="body2"
-                              gutterBottom
-                              style={{
-                                fontFamily: "Arial, sans-serif",
-                                marginBottom: "8px",
-                              }}
-                            >
-                              {job.minJdSalary} {job.salaryCurrencyCode}-{" "}
-                              {job.maxJdSalary} {job.salaryCurrencyCode}
-                            </Typography>
+                            <>
+                              {job.minJdSalary == null || 0 ? (
+                                <Typography
+                                  variant="body2"
+                                  gutterBottom
+                                  style={{
+                                    fontFamily: "Arial, sans-serif",
+                                    marginBottom: "8px",
+                                  }}
+                                >
+                                  {job.maxJdSalary} {job.salaryCurrencyCode}
+                                </Typography>
+                              ) : (
+                                <Typography
+                                  variant="body2"
+                                  gutterBottom
+                                  style={{
+                                    fontFamily: "Arial, sans-serif",
+                                    marginBottom: "8px",
+                                  }}
+                                >
+                                  {job.minJdSalary} {job.salaryCurrencyCode}-{" "}
+                                  {job.maxJdSalary} {job.salaryCurrencyCode}
+                                </Typography>
+                              )}
+                            </>
                           </div>
                         </div>
                         <Button
@@ -471,17 +510,33 @@ const JobListings = () => {
                                 >
                                   Minimum Experience:
                                 </Typography>
-                                <Typography
-                                  variant="body2"
-                                  gutterBottom
-                                  style={{
-                                    fontFamily: "Arial, sans-serif",
+                                <>
+                                  {job.minExp == null || 0 ? (
+                                    <Typography
+                                      variant="body2"
+                                      gutterBottom
+                                      style={{
+                                        fontFamily: "Arial, sans-serif",
 
-                                    marginBottom: "8px",
-                                  }}
-                                >
-                                  {job.minExp} years
-                                </Typography>
+                                        marginBottom: "8px",
+                                      }}
+                                    >
+                                      0 years
+                                    </Typography>
+                                  ) : (
+                                    <Typography
+                                      variant="body2"
+                                      gutterBottom
+                                      style={{
+                                        fontFamily: "Arial, sans-serif",
+
+                                        marginBottom: "8px",
+                                      }}
+                                    >
+                                      {job.minExp} years
+                                    </Typography>
+                                  )}
+                                </>
                               </div>
 
                               <div
@@ -503,17 +558,33 @@ const JobListings = () => {
                                 >
                                   Estimated Salary:
                                 </Typography>
-                                <Typography
-                                  variant="body2"
-                                  gutterBottom
-                                  style={{
-                                    fontFamily: "Arial, sans-serif",
-                                    marginBottom: "8px",
-                                  }}
-                                >
-                                  {job.minJdSalary} {job.salaryCurrencyCode}-{" "}
-                                  {job.maxJdSalary} {job.salaryCurrencyCode}
-                                </Typography>
+                                <>
+                                  {job.minJdSalary == null || 0 ? (
+                                    <Typography
+                                      variant="body2"
+                                      gutterBottom
+                                      style={{
+                                        fontFamily: "Arial, sans-serif",
+                                        marginBottom: "8px",
+                                      }}
+                                    >
+                                      {job.maxJdSalary} {job.salaryCurrencyCode}
+                                    </Typography>
+                                  ) : (
+                                    <Typography
+                                      variant="body2"
+                                      gutterBottom
+                                      style={{
+                                        fontFamily: "Arial, sans-serif",
+                                        marginBottom: "8px",
+                                      }}
+                                    >
+                                      {job.minJdSalary} {job.salaryCurrencyCode}
+                                      - {job.maxJdSalary}{" "}
+                                      {job.salaryCurrencyCode}
+                                    </Typography>
+                                  )}
+                                </>
                               </div>
                             </div>
                             <Button
@@ -624,43 +695,84 @@ const JobListings = () => {
                     >
                       Minimum Experience:
                     </Typography>
-                    <Typography
-                      variant="body2"
-                      gutterBottom
-                      style={{
-                        marginBottom: "8px",
-                        color: "#666",
-                      }}
-                    >
-                      {selectedCard.minExp} years
-                    </Typography>
+
+                    <>
+                      {selectedCard.minExp == null || 0 ? (
+                        <Typography
+                          variant="body2"
+                          gutterBottom
+                          style={{
+                            fontFamily: "Arial, sans-serif",
+
+                            marginBottom: "8px",
+                          }}
+                        >
+                          0 years
+                        </Typography>
+                      ) : (
+                        <Typography
+                          variant="body2"
+                          gutterBottom
+                          style={{
+                            fontFamily: "Arial, sans-serif",
+
+                            marginBottom: "8px",
+                          }}
+                        >
+                          {selectedCard.minExp} years
+                        </Typography>
+                      )}
+                    </>
                   </div>
-                  <div style={{ display: "flex", alignItems: "center" }}>
+
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                    }}
+                  >
                     <Typography
                       variant="body2"
                       gutterBottom
                       style={{
+                        fontFamily: "Arial, sans-serif",
+                        color: "#aaa",
                         marginBottom: "8px",
                         marginRight: "4px",
                         fontWeight: "bold",
-                        color: "#444",
                       }}
                     >
                       Estimated Salary:
                     </Typography>
-                    <Typography
-                      variant="body2"
-                      gutterBottom
-                      style={{
-                        marginBottom: "8px",
-                        color: "#666",
-                      }}
-                    >
-                      {selectedCard.salaryCurrencyCode}{" "}
-                      {selectedCard.minJdSalary} -{" "}
-                      {selectedCard.salaryCurrencyCode}{" "}
-                      {selectedCard.maxJdSalary}
-                    </Typography>
+                    <>
+                      {selectedCard.minJdSalary == null || 0 ? (
+                        <Typography
+                          variant="body2"
+                          gutterBottom
+                          style={{
+                            fontFamily: "Arial, sans-serif",
+                            marginBottom: "8px",
+                          }}
+                        >
+                          {selectedCard.maxJdSalary}{" "}
+                          {selectedCard.salaryCurrencyCode}
+                        </Typography>
+                      ) : (
+                        <Typography
+                          variant="body2"
+                          gutterBottom
+                          style={{
+                            fontFamily: "Arial, sans-serif",
+                            marginBottom: "8px",
+                          }}
+                        >
+                          {selectedCard.minJdSalary}{" "}
+                          {selectedCard.salaryCurrencyCode} -
+                          {selectedCard.maxJdSalary}{" "}
+                          {selectedCard.salaryCurrencyCode}
+                        </Typography>
+                      )}
+                    </>
                   </div>
                   <Grid container justifyContent="flex-end" spacing={2}>
                     <Grid item>
