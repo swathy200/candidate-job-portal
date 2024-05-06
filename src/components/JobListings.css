@@ -1,0 +1,16 @@
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .job-details {
+    overflow: hidden;
+    max-height: 100px; 
+    transition: max-height 0.3s ease; 
+  }
+  
+  .expanded {
+    max-height: none; 
+  }
+  
