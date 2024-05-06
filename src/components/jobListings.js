@@ -109,14 +109,14 @@ const JobListings = () => {
   const filteredJobListings = filterJobListings(list);
 
   return (
-    <div>
+    <div style={{ backgroundColor:"#cfd8dc"}}>
       <div
         style={{
           display: "flex",
           justifyContent: "space-around",
           padding: "10px",
           borderRadius: "5px",
-         
+        
         }}
       >
         <Grid
@@ -136,11 +136,12 @@ const JobListings = () => {
               sx={{
                 "& input": {
                   color: "#FFFFFF",
-                  backgroundColor: "#00246b",
+                  backgroundColor: "#263238",
                   borderRadius: "5px",
+
                 },
                 "& fieldset": {
-                  borderColor: "#3f51b5",
+                  borderColor: "#263238",
                   borderRadius: "5px",
                 },
               }}
@@ -157,11 +158,11 @@ const JobListings = () => {
               sx={{
                 "& input": {
                   color: "#FFFFFF",
-                  backgroundColor: "#00246b",
+                  backgroundColor: "#263238",
                   borderRadius: "5px",
                 },
                 "& fieldset": {
-                  borderColor: "#3f51b5",
+                  borderColor: "#263238",
                   borderRadius: "5px",
                 },
               }}
@@ -179,11 +180,11 @@ const JobListings = () => {
               sx={{
                 "& input": {
                   color: "#FFFFFF",
-                  backgroundColor: "#00246b",
+                  backgroundColor: "#263238",
                   borderRadius: "5px",
                 },
                 "& fieldset": {
-                  borderColor: "#3f51b5",
+                  borderColor: "#263238",
                   borderRadius: "5px",
                 },
               }}
@@ -200,11 +201,11 @@ const JobListings = () => {
               sx={{
                 "& input": {
                   color: "#FFFFFF",
-                  backgroundColor: "#00246b",
+                  backgroundColor: "#263238",
                   borderRadius: "5px",
                 },
                 "& fieldset": {
-                  borderColor: "#3f51b5",
+                  borderColor: "#263238",
                   borderRadius: "5px",
                 },
               }}
@@ -221,11 +222,11 @@ const JobListings = () => {
               sx={{
                 "& input": {
                   color: "#FFFFFF",
-                  backgroundColor: "#00246b",
+                  backgroundColor: "#263238",
                   borderRadius: "5px",
                 },
                 "& fieldset": {
-                  borderColor: "#3f51b5",
+                  borderColor: "#263238",
                   borderRadius: "5px",
                 },
               }}
@@ -258,7 +259,7 @@ const JobListings = () => {
                       boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
                       cursor: "pointer",
                       marginBottom: "20px",
-                      backgroundColor: "#cadcfc"
+                     
                     }}
                   >
                     <CardContent>
@@ -400,7 +401,7 @@ const JobListings = () => {
                             padding: "8px 20px",
                             textTransform: "none",
                             boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-                            backgroundColor: "#00246b",
+                            backgroundColor: "#263238",
                           }}
                         >
                           Details
@@ -423,7 +424,6 @@ const JobListings = () => {
             color: "#fff",
             padding: "10px",
             borderRadius: "10px",
-            backgroundColor: "#cadcfc",
           }}
         >
           <div
@@ -596,7 +596,7 @@ const JobListings = () => {
                                 padding: "8px 20px",
                                 textTransform: "none",
                                 boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-                                backgroundColor: "#00246b",
+                                backgroundColor: "#263238",
                               }}
                             >
                               Details
@@ -622,7 +622,7 @@ const JobListings = () => {
                     boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
                     marginRight: "8px",
                     textTransform: "none",
-                    backgroundColor: "#00246b",
+                    backgroundColor: "#263238",
                     color: "#FFFFFF",
                   }}
                   onClick={handleLoadMore}
@@ -785,7 +785,7 @@ const JobListings = () => {
                           boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
                           marginRight: "8px",
                           textTransform: "none",
-                          backgroundColor: "#00246b",
+                          backgroundColor: "#263238",
                           color: "#FFFFFF",
                         }}
                       >
@@ -801,7 +801,7 @@ const JobListings = () => {
                           boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
                           textTransform: "none",
                           backgroundColor: "transparent",
-                          borderColor: "#00246b",
+                          borderColor: "#263238",
                           color: "#00246b",
                         }}
                       >
