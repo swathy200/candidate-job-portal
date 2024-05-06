@@ -9,8 +9,6 @@ import {
   Button,
   Card,
   CardContent,
-  Divider,
-  Stack,
 } from "@mui/material";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { DataGrid } from "@mui/x-data-grid";
@@ -33,6 +31,12 @@ const JobListings = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [cardClicked, setCardClicker] = useState(false);
   const jobListingsDivRef = useRef(null);
+
+  const [showFullContent, setShowFullContent] = useState(false);
+
+  const toggleContent = () => {
+    setShowFullContent(!showFullContent);
+  };
 
   const [list, setList] = useState(jobListings);
   useEffect(() => {
@@ -65,7 +69,7 @@ const JobListings = () => {
     }
   };
 
-  //   applying filters
+  // applying filters
   const filterJobListings = (listings) => {
     return listings.filter((job) => {
       const roleMatches =
@@ -109,23 +113,23 @@ const JobListings = () => {
   const filteredJobListings = filterJobListings(list);
 
   return (
-    <div style={{ backgroundColor:"#cfd8dc"}}>
+    <div style={{ backgroundColor: "#FFFFFF" }}>
       <div
         style={{
           display: "flex",
-          justifyContent: "space-around",
+          justifyContent: "center",
           padding: "10px",
           borderRadius: "5px",
-        
         }}
       >
         <Grid
           container
           spacing={2}
           alignContent="center"
-          justifyContent="space-around"
+          justifyContent="center"
+          style={{ maxWidth: "100%" }}
         >
-          <Grid item xs={12} sm={6} md={4} lg={2}>
+          <Grid item xs={12} sm={6} md={3}>
             <TextField
               type="text"
               name="role"
@@ -135,10 +139,10 @@ const JobListings = () => {
               fullWidth
               sx={{
                 "& input": {
-                  color: "#FFFFFF",
-                  backgroundColor: "#263238",
-                  borderRadius: "5px",
-
+                  color: "#0000000",
+                  backgroundColor: "#FFFFFF",
+                  borderRadius: "8px",
+                  boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
                 },
                 "& fieldset": {
                   borderColor: "#263238",
@@ -147,7 +151,8 @@ const JobListings = () => {
               }}
             />
           </Grid>
-          <Grid item xs={12} sm={6} md={4} lg={2}>
+
+          <Grid item xs={12} sm={6} md={3}>
             <TextField
               type="text"
               name="location"
@@ -157,9 +162,10 @@ const JobListings = () => {
               fullWidth
               sx={{
                 "& input": {
-                  color: "#FFFFFF",
-                  backgroundColor: "#263238",
-                  borderRadius: "5px",
+                  color: "#0000000",
+                  backgroundColor: "#FFFFFF",
+                  borderRadius: "8px",
+                  boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
                 },
                 "& fieldset": {
                   borderColor: "#263238",
@@ -169,7 +175,7 @@ const JobListings = () => {
             />
           </Grid>
 
-          <Grid item xs={12} sm={6} md={4} lg={2}>
+          <Grid item xs={12} sm={6} md={3}>
             <TextField
               type="text"
               name="minSalary"
@@ -179,9 +185,10 @@ const JobListings = () => {
               fullWidth
               sx={{
                 "& input": {
-                  color: "#FFFFFF",
-                  backgroundColor: "#263238",
-                  borderRadius: "5px",
+                  color: "#0000000",
+                  backgroundColor: "#FFFFFF",
+                  borderRadius: "8px",
+                  boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
                 },
                 "& fieldset": {
                   borderColor: "#263238",
@@ -190,7 +197,7 @@ const JobListings = () => {
               }}
             />
           </Grid>
-          <Grid item xs={12} sm={6} md={4} lg={2}>
+          <Grid item xs={12} sm={6} md={3}>
             <TextField
               type="text"
               name="company"
@@ -200,30 +207,10 @@ const JobListings = () => {
               fullWidth
               sx={{
                 "& input": {
-                  color: "#FFFFFF",
-                  backgroundColor: "#263238",
-                  borderRadius: "5px",
-                },
-                "& fieldset": {
-                  borderColor: "#263238",
-                  borderRadius: "5px",
-                },
-              }}
-            />
-          </Grid>
-          <Grid item xs={12} sm={6} md={4} lg={2}>
-            <TextField
-              type="text"
-              name="experience"
-              value={filters.experience}
-              onChange={handleInputChange}
-              placeholder="Experience..."
-              fullWidth
-              sx={{
-                "& input": {
-                  color: "#FFFFFF",
-                  backgroundColor: "#263238",
-                  borderRadius: "5px",
+                  color: "#0000000",
+                  backgroundColor: "#FFFFFF",
+                  borderRadius: "8px",
+                  boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
                 },
                 "& fieldset": {
                   borderColor: "#263238",
@@ -234,62 +221,112 @@ const JobListings = () => {
           </Grid>
         </Grid>
       </div>
-      {cardClicked == false ? (
-        <div
-          style={{
-            padding: "20px",
-            borderRadius: "10px",
-            overflowY: "auto",
-            borderRight: "1px solid #ccc",
-            maxHeight: "calc(100vh - 150px)",
-           
-          }}
+
+      <div
+        ref={jobListingsDivRef}
+        id="jobListingsDivRef"
+        style={{
+          padding: "20px",
+          borderRadius: "10px",
+          overflowY: "auto",
+          borderRight: "1px solid #ccc",
+          maxHeight: "calc(100vh - 150px)",
+        }}
+      >
+        <InfiniteScroll
+          dataLength={jobListings.length}
+          next={handleLoadMore}
+          loader={<CircularProgress />}
+          scrollableTarget="jobListingsDivRef"
         >
-          <div>
-            <Grid
-              container
-              spacing={{ xs: 2, md: 3 }}
-              columns={{ xs: 4, sm: 8, md: 12 }}
-            >
-              {filteredJobListings.map((job, index) => (
-                <Grid item xs={2} sm={4} md={4}>
+          <Grid container spacing={2}>
+            {filteredJobListings.map((job, index) => (
+              <React.Fragment key={index}>
+                <Grid item xs={12} sm={6} md={4} lg={3}>
                   <Card
                     style={{
+                      width: "300px",
                       borderRadius: "10px",
-                      boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
+                      boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
                       cursor: "pointer",
                       marginBottom: "20px",
-                     
                     }}
                   >
                     <CardContent>
-                      <Typography
-                        variant="h6"
-                        gutterBottom
-                        style={{
-                          fontFamily: "Arial, sans-serif",
-                          fontWeight: "bold",
+                    <Typography
+    variant="subtitle2"
+    gutterBottom
+    style={{
+      fontFamily: 'Trebuchet MS, sans-serif',
+      marginBottom: "8px",
+      color: '#777', // Medium gray for company name
+    }}
+  >
+    {job.companyName}
+  </Typography>
+  <Typography
+    variant="subtitle2"
+    gutterBottom
+    style={{
+      fontFamily: 'Trebuchet MS, sans-serif',
+      fontWeight: "bold", 
+      textTransform: "capitalize",
+    }}
+  >
+    {job.jobRole}
+  </Typography>
+  <Typography
+    variant="subtitle3"
+    gutterBottom
+    style={{
+      fontFamily: "Arial, sans-serif",
+      marginBottom: "16px",
+      fontSize: "12px", 
+      textTransform: "capitalize",
+    }}
+  >
+    {job.location}
+  </Typography>
+                      <Typography style={{
+      fontFamily: 'Trebuchet MS, sans-serif',
+      marginBottom: "10px",
+      fontWeight: "bold", 
+      textTransform: "capitalize",
+    }}>About Company</Typography>
+                      <Typography style={{
+      fontFamily: 'Trebuchet MS, sans-serif',
+      marginBottom: "16px", 
+      textTransform: "capitalize",
+    }}>About us</Typography>
+                      <div>
+                        <Typography
+                          variant="subtitle2"
+                          gutterBottom
+                          style={{
+                            fontFamily: 'Trebuchet MS, sans-serif',
 
-                          marginBottom: "8px",
-                        }}
-                      >
-                        {job.companyName}
-                      </Typography>
-                      <Typography
-                        variant="subtitle1"
-                        gutterBottom
-                        style={{
-                          fontFamily: "Arial, sans-serif",
+                            textTransform: "capitalize",
+                          }}
+                        >
+                          {showFullContent
+                            ? job.jobDetailsFromCompany
+                            : job.jobDetailsFromCompany.slice(0, 100)}
+                        </Typography>
+                        <Typography
+                          variant="subtitle2"
+                          style={{
+                            fontFamily: 'Trebuchet MS, sans-serif',
 
-                          marginBottom: "16px",
-                          textTransform: "capitalize",
-                        }}
-                      >
-                        {job.jobRole}
-                      </Typography>
+                            textTransform: "capitalize",
+                          }}
+                          onClick={toggleContent}
+                        >
+                          {showFullContent ? "View Less" : "View More"}
+                        </Typography>
+                      </div>
+
                       <div
                         style={{
-                          display: "flex",
                           justifyContent: "space-between",
                           alignItems: "center",
                           borderTop: "1px solid #ddd",
@@ -308,7 +345,6 @@ const JobListings = () => {
                               gutterBottom
                               style={{
                                 fontFamily: "Arial, sans-serif",
-
                                 marginBottom: "8px",
                                 marginRight: "4px",
                                 fontWeight: "bold",
@@ -323,7 +359,6 @@ const JobListings = () => {
                                   gutterBottom
                                   style={{
                                     fontFamily: "Arial, sans-serif",
-
                                     marginBottom: "8px",
                                   }}
                                 >
@@ -335,7 +370,6 @@ const JobListings = () => {
                                   gutterBottom
                                   style={{
                                     fontFamily: "Arial, sans-serif",
-
                                     marginBottom: "8px",
                                   }}
                                 >
@@ -385,436 +419,84 @@ const JobListings = () => {
                                     marginBottom: "8px",
                                   }}
                                 >
-                                  {job.minJdSalary} {job.salaryCurrencyCode}-{" "}
+                                  {job.minJdSalary} {job.salaryCurrencyCode} -{" "}
                                   {job.maxJdSalary} {job.salaryCurrencyCode}
                                 </Typography>
                               )}
                             </>
                           </div>
                         </div>
-                        <Button
-                          variant="contained"
-                          color="primary"
-                          onClick={() => handleCardClick1(job)}
+                        <div
                           style={{
-                            borderRadius: "20px",
-                            padding: "8px 20px",
-                            textTransform: "none",
-                            boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-                            backgroundColor: "#263238",
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "flex-start", // Align buttons to the left
+                            marginTop: "8px", // Add some space between estimated salary and buttons
                           }}
                         >
-                          Details
-                        </Button>
+                          <Button
+                            variant="contained"
+                            color="primary"
+                            style={{
+                              borderRadius: "20px",
+                              padding: "10px 20px",
+                              boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+                              marginBottom: "8px",
+                              textTransform: "none",
+                              backgroundColor: "#54efc3",
+                              color: "#000000",
+                              width: "100%", // Set a fixed width for the button
+                            }}
+                          >
+                            Easy Apply
+                          </Button>
+                          <Button
+                            variant="outlined"
+                            style={{
+                              borderRadius: "20px",
+                              padding: "10px 20px",
+                              boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+                              textTransform: "none",
+                              backgroundColor: "#4943da",
+                              borderColor: "#4943da",
+                              color: "#FFFFFF",
+                              width: "100%", // Set a fixed width for the button
+                            }}
+                          >
+                            Ask for Referral
+                          </Button>
+                        </div>
                       </div>
                     </CardContent>
                   </Card>
                 </Grid>
-              ))}
-            </Grid>
-          </div>
-        </div>
-      ) : (
-        <div
-          style={{
-            fontFamily: "Arial, sans-serif",
-            display: "grid",
-            gridTemplateColumns: "1fr 2fr",
-            gridGap: "20px",
-            color: "#fff",
-            padding: "10px",
-            borderRadius: "10px",
-          }}
-        >
-          <div
-            ref={jobListingsDivRef}
-            id="jobListingsDivRef"
-            style={{
-              padding: "20px",
-              borderRadius: "10px",
-              overflowY: "auto",
-              borderRight: "1px solid #ccc",
-              maxHeight: "calc(100vh - 150px)",
-            }}
-          >
-            <InfiniteScroll
-              dataLength={jobListings.length}
-              next={handleLoadMore}
-              // hasMore={hasNextPage}
-              loader={<CircularProgress />}
-              scrollableTarget="jobListingsDivRef"
+              </React.Fragment>
+            ))}
+          </Grid>
+        </InfiniteScroll>
+
+        {loading && <CircularProgress />}
+        {!loading && hasNextPage && (
+          <div style={{ textAlign: "center", marginTop: "20px" }}>
+            <Button
+              variant="contained"
+              color="primary"
+              style={{
+                borderRadius: "20px",
+                padding: "10px 20px",
+                boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+                marginRight: "8px",
+                textTransform: "none",
+                backgroundColor: "#263238",
+                color: "#FFFFFF",
+              }}
+              onClick={handleLoadMore}
             >
-              <Grid container spacing={2}>
-                {filteredJobListings.map((job, index) => (
-                  <React.Fragment key={index}>
-                    <Grid item xs={12}>
-                      <Card
-                        style={{
-                          borderRadius: "10px",
-                          boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
-                          cursor: "pointer",
-                          marginBottom: "20px",
-                        }}
-                      >
-                        <CardContent>
-                          <Typography
-                            variant="h6"
-                            gutterBottom
-                            style={{
-                              fontFamily: "Arial, sans-serif",
-                              fontWeight: "bold",
-
-                              marginBottom: "8px",
-                            }}
-                          >
-                            {job.companyName}
-                          </Typography>
-                          <Typography
-                            variant="subtitle1"
-                            gutterBottom
-                            style={{
-                              fontFamily: "Arial, sans-serif",
-
-                              marginBottom: "16px",
-                              textTransform: "capitalize",
-                            }}
-                          >
-                            {job.jobRole}
-                          </Typography>
-                          <div
-                            style={{
-                              display: "flex",
-                              justifyContent: "space-between",
-                              alignItems: "center",
-                              borderTop: "1px solid #ddd",
-                              paddingTop: "8px",
-                            }}
-                          >
-                            <div>
-                              <div
-                                style={{
-                                  display: "flex",
-                                  alignItems: "center",
-                                }}
-                              >
-                                <Typography
-                                  variant="body2"
-                                  gutterBottom
-                                  style={{
-                                    fontFamily: "Arial, sans-serif",
-
-                                    marginBottom: "8px",
-                                    marginRight: "4px",
-                                    fontWeight: "bold",
-                                  }}
-                                >
-                                  Minimum Experience:
-                                </Typography>
-                                <>
-                                  {job.minExp == null || 0 ? (
-                                    <Typography
-                                      variant="body2"
-                                      gutterBottom
-                                      style={{
-                                        fontFamily: "Arial, sans-serif",
-
-                                        marginBottom: "8px",
-                                      }}
-                                    >
-                                      0 years
-                                    </Typography>
-                                  ) : (
-                                    <Typography
-                                      variant="body2"
-                                      gutterBottom
-                                      style={{
-                                        fontFamily: "Arial, sans-serif",
-
-                                        marginBottom: "8px",
-                                      }}
-                                    >
-                                      {job.minExp} years
-                                    </Typography>
-                                  )}
-                                </>
-                              </div>
-
-                              <div
-                                style={{
-                                  display: "flex",
-                                  alignItems: "center",
-                                }}
-                              >
-                                <Typography
-                                  variant="body2"
-                                  gutterBottom
-                                  style={{
-                                    fontFamily: "Arial, sans-serif",
-                                    color: "#aaa",
-                                    marginBottom: "8px",
-                                    marginRight: "4px",
-                                    fontWeight: "bold",
-                                  }}
-                                >
-                                  Estimated Salary:
-                                </Typography>
-                                <>
-                                  {job.minJdSalary == null || 0 ? (
-                                    <Typography
-                                      variant="body2"
-                                      gutterBottom
-                                      style={{
-                                        fontFamily: "Arial, sans-serif",
-                                        marginBottom: "8px",
-                                      }}
-                                    >
-                                      {job.maxJdSalary} {job.salaryCurrencyCode}
-                                    </Typography>
-                                  ) : (
-                                    <Typography
-                                      variant="body2"
-                                      gutterBottom
-                                      style={{
-                                        fontFamily: "Arial, sans-serif",
-                                        marginBottom: "8px",
-                                      }}
-                                    >
-                                      {job.minJdSalary} {job.salaryCurrencyCode}
-                                      - {job.maxJdSalary}{" "}
-                                      {job.salaryCurrencyCode}
-                                    </Typography>
-                                  )}
-                                </>
-                              </div>
-                            </div>
-                            <Button
-                              variant="contained"
-                              color="primary"
-                              onClick={() => handleCardClick(job)}
-                              style={{
-                                borderRadius: "20px",
-                                padding: "8px 20px",
-                                textTransform: "none",
-                                boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-                                backgroundColor: "#263238",
-                              }}
-                            >
-                              Details
-                            </Button>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </Grid>
-                  </React.Fragment>
-                ))}
-              </Grid>
-            </InfiniteScroll>
-
-            {loading && <CircularProgress />}
-            {!loading && hasNextPage && (
-              <div style={{ textAlign: "center", marginTop: "20px" }}>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  style={{
-                    borderRadius: "20px",
-                    padding: "10px 20px",
-                    boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-                    marginRight: "8px",
-                    textTransform: "none",
-                    backgroundColor: "#263238",
-                    color: "#FFFFFF",
-                  }}
-                  onClick={handleLoadMore}
-                >
-                  Load More
-                </Button>
-              </div>
-            )}
+              Load More
+            </Button>
           </div>
-          <div
-            style={{
-              padding: "20px",
-              borderRadius: "10px",
-              overflowY: "auto",
-            }}
-          >
-            {selectedCard && (
-              <Card
-                style={{
-                  boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
-                  borderRadius: "10px",
-                  padding: "20px",
-                  backgroundColor: "#f5f5f5",
-                  fontFamily: "Arial, sans-serif",
-                }}
-              >
-                <CardContent>
-                  <Typography
-                    variant="h5"
-                    gutterBottom
-                    style={{
-                      marginBottom: "8px",
-                      fontWeight: "bold",
-                      color: "#333",
-                    }}
-                  >
-                    {selectedCard.companyName}
-                  </Typography>
-                  <Typography
-                    variant="subtitle1"
-                    gutterBottom
-                    style={{
-                      marginBottom: "16px",
-                      textTransform: "capitalize",
-                      color: "#555",
-                    }}
-                  >
-                    {selectedCard.jobRole}
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    gutterBottom
-                    style={{
-                      marginBottom: "16px",
-                      color: "#777",
-                    }}
-                  >
-                    {selectedCard.jobDetailsFromCompany}
-                  </Typography>
-                  <div style={{ display: "flex", alignItems: "center" }}>
-                    <Typography
-                      variant="body2"
-                      gutterBottom
-                      style={{
-                        marginBottom: "8px",
-                        marginRight: "4px",
-                        fontWeight: "bold",
-                        color: "#444",
-                      }}
-                    >
-                      Minimum Experience:
-                    </Typography>
-
-                    <>
-                      {selectedCard.minExp == null || 0 ? (
-                        <Typography
-                          variant="body2"
-                          gutterBottom
-                          style={{
-                            fontFamily: "Arial, sans-serif",
-
-                            marginBottom: "8px",
-                          }}
-                        >
-                          0 years
-                        </Typography>
-                      ) : (
-                        <Typography
-                          variant="body2"
-                          gutterBottom
-                          style={{
-                            fontFamily: "Arial, sans-serif",
-
-                            marginBottom: "8px",
-                          }}
-                        >
-                          {selectedCard.minExp} years
-                        </Typography>
-                      )}
-                    </>
-                  </div>
-
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                    }}
-                  >
-                    <Typography
-                      variant="body2"
-                      gutterBottom
-                      style={{
-                        fontFamily: "Arial, sans-serif",
-                        color: "#aaa",
-                        marginBottom: "8px",
-                        marginRight: "4px",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      Estimated Salary:
-                    </Typography>
-                    <>
-                      {selectedCard.minJdSalary == null || 0 ? (
-                        <Typography
-                          variant="body2"
-                          gutterBottom
-                          style={{
-                            fontFamily: "Arial, sans-serif",
-                            marginBottom: "8px",
-                          }}
-                        >
-                          {selectedCard.maxJdSalary}{" "}
-                          {selectedCard.salaryCurrencyCode}
-                        </Typography>
-                      ) : (
-                        <Typography
-                          variant="body2"
-                          gutterBottom
-                          style={{
-                            fontFamily: "Arial, sans-serif",
-                            marginBottom: "8px",
-                          }}
-                        >
-                          {selectedCard.minJdSalary}{" "}
-                          {selectedCard.salaryCurrencyCode} -
-                          {selectedCard.maxJdSalary}{" "}
-                          {selectedCard.salaryCurrencyCode}
-                        </Typography>
-                      )}
-                    </>
-                  </div>
-                  <Grid container justifyContent="flex-end" spacing={2}>
-                    <Grid item>
-                      <Button
-                        variant="contained"
-                        color="primary"
-                        style={{
-                          borderRadius: "20px",
-                          padding: "10px 20px",
-                          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-                          marginRight: "8px",
-                          textTransform: "none",
-                          backgroundColor: "#263238",
-                          color: "#FFFFFF",
-                        }}
-                      >
-                        Easy Apply
-                      </Button>
-                    </Grid>
-                    <Grid item>
-                      <Button
-                        variant="outlined"
-                        style={{
-                          borderRadius: "20px",
-                          padding: "10px 20px",
-                          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-                          textTransform: "none",
-                          backgroundColor: "transparent",
-                          borderColor: "#263238",
-                          color: "#00246b",
-                        }}
-                      >
-                        Ask for Referral
-                      </Button>
-                    </Grid>
-                  </Grid>
-                </CardContent>
-              </Card>
-            )}
-          </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };
